@@ -1,0 +1,46 @@
+@use "../../scss/index" as *;
+
+.card{
+    display: flex;
+    flex-direction: column;
+    background: #edefee;
+        border-radius: 16px;
+        width: 16rem;
+        overflow: hidden;
+        font-family: $primary-font;
+    &__content {
+        display: grid;
+        grid-template-areas: 
+        "title price" 
+        "description description"
+        "delivery delivery-image";
+        grid-template-columns: 1fr 1fr;
+        padding: 1.5rem;
+        row-gap: 2rem;
+    }
+    &__title {
+        grid-area: title;
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-transform: capitalize;
+    }
+    &__price {
+        grid-area: price;
+        font-weight: 700;
+        color: orangered;
+        font-size: 1.5rem;
+        text-align: end;
+    }
+    &__description {
+        grid-area: description;
+    }
+    &__delivery {
+        grid-area: delivery;
+    }
+    &__delivery-image {
+        grid-area: delivery-image;
+    }
+    &__image {
+        height: 200px;
+    }
+}
