@@ -1,0 +1,21 @@
+.formField {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 6px;
+}
+
+.label {
+    color: white;
+}
+
+.input {
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+}
+
+.error {
+    margin: 4px;
+    color: #f4ce14;
+    font-size: 12px;
+}

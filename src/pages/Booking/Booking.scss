@@ -1,0 +1,19 @@
+@use "../../scss/index" as *;
+
+.booking {
+    display: grid;
+    grid-auto-flow: row;
+    place-items: center;
+    gap: 2rem;
+    &__content {
+        background: $base-color;
+        padding: 4rem;
+        width: 50%;
+        border-radius: 10px;
+    }
+    &__title {
+        font-size: 22px;
+        color: white;
+        margin-bottom: 2rem;
+    }
+}

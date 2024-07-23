@@ -3,7 +3,7 @@ import "./Button.scss";
 
 type ButtonProps = {
     title: string,
-    onClick: Function,
+    onClick?: Function,
     type?: 'submit' | 'button'
   }
 
