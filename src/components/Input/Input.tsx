@@ -7,9 +7,10 @@ type InputProp = {
   fieldLabel: string;
   type?: "date" | "text" | "time" | "number" | "select";
   options?: string[],
+  onChange?: Function 
 };
 
-const Input = ({ formik, field, fieldLabel, type = "text", options = [] }: InputProp) => {
+const Input = ({ formik, field, fieldLabel, type = "text", options = [], onChange }: InputProp) => {
   return (
     <div className="formField">
       <label className="label" htmlFor={field}>
@@ -22,7 +23,7 @@ const Input = ({ formik, field, fieldLabel, type = "text", options = [] }: Input
         id={field}
         name={field}
         type={type}
-        onChange={formik.handleChange}
+        onChange={(e) => { formik.handleChange(e);  onChange ? onChange(e) : '';}}
         onBlur={formik.handleBlur}
         value={formik.values[field]}
       /> : 

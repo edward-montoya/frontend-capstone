@@ -3,27 +3,32 @@ import * as Yup from "yup";
 import "./BookingForm.scss";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
+import { useContext, useEffect } from "react";
+import { Reservation, ReservationContext, ReservationContextType } from "../../../context/ReservationContext";
 
-const BookingForm = ({ confirmation } : {confirmation: Function}) => {
+const BookingForm = ({ confirmation }: { confirmation: Function }) => {
+
+  const { availableTimes, dispatchOnDateChange, submitReservation } = useContext(ReservationContext) as ReservationContextType;
+
   const getCurrentDate = () => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return today;
   };
 
+
   const formik = useFormik({
     initialValues: {
       date: "",
-      time: "17:00",
+      time: "",
       guests: "",
-      occasion: "Not specified",
+      occasion: "",
     },
     validationSchema: Yup.object({
       date: Yup.date()
         .min(getCurrentDate(), "You cannot reserve old dates")
         .required("Required"),
-      time: Yup.string()
-        .required("Required"),
+      time: Yup.string().required("Required"),
       guests: Yup.number()
         .required("Required")
         .min(1, "At least one person needs to assist")
@@ -34,13 +39,13 @@ const BookingForm = ({ confirmation } : {confirmation: Function}) => {
     }),
     onSubmit: (values) => {
       // Do something with the data
-      console.log('Form data: ', JSON.stringify(values, null, 2));
+      console.log("Form data: ", JSON.stringify(values, null, 2));
+      submitReservation(values as unknown as Reservation);
       confirmation();
     },
   });
 
-  const occasionOptions = ['Not specified', 'Birthday', 'Anniversary'];
-  const timeOptions = ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '23:00']
+  const occasionOptions = ["Not specified", "Birthday", "Anniversary"];
 
   return (
     <form onSubmit={formik.handleSubmit} className="booking-form">
@@ -49,14 +54,19 @@ const BookingForm = ({ confirmation } : {confirmation: Function}) => {
         field="date"
         fieldLabel="Choose date"
         formik={formik}
+        onChange={dispatchOnDateChange}
       />
-      <Input
-        type="select"
-        field="time"
-        fieldLabel="Choose time"
-        formik={formik}
-        options={timeOptions}
-      />
+      {formik.values.date ? (
+        <Input
+          type="select"
+          field="time"
+          fieldLabel="Choose time"
+          formik={formik}
+          options={availableTimes}
+        />
+      ) : (
+        ""
+      )}
       <Input
         type="number"
         field="guests"
