@@ -1,5 +1,5 @@
-import Button from "../Button/Button";
-import FoodCard from "../FoodCard/FoodCard";
+import Button from "../../../components/Button/Button";
+import FoodCard from "../../../components/FoodCard/FoodCard";
 import "./SpecialMenu.scss";
 
 const SpecialsMenu = () => {

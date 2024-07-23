@@ -1,0 +1,35 @@
+@use "../../../scss/index" as *;
+
+.testimonials {
+  background: #495e57;
+  padding: 2rem 0;
+  max-width: 65rem;
+  margin: 0 auto;
+  &__list {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 1rem;
+  }
+  &__title {
+    font-family: $primary-font;
+    font-size: 42px;
+    text-align: center;
+    color: white;
+    line-height: 10px;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .testimonials {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

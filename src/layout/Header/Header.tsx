@@ -17,7 +17,7 @@ const Header = () => {
                     <Link to="/">Home</Link>
                 </li>
                 <li className="header__link">
-                    <Link to="/" onClick={() => {scrollTo("#about")}}>
+                    <Link to="/404" onClick={() => {scrollTo("#about")}}>
                     About
                     </Link>
                 </li>

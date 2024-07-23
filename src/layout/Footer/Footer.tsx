@@ -29,7 +29,7 @@ const Footer = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/" onClick={() => {scrollTo("#about")}} >
+                <Link to="/404" onClick={() => {scrollTo("#about")}} >
                   About
                 </Link>
               </li>

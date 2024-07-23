@@ -1,7 +1,9 @@
-import Hero from "../../components/Hero/Hero";
-import SpecialsMenu from "../../components/SpecialMenu/SpecialMenu";
+import Hero from "./Hero/Hero";
+import SpecialsMenu from "./SpecialMenu/SpecialMenu";
 import { Helmet } from "react-helmet";
 import Logo from "../../assets/Logo.svg";
+import TestimonialList from "./TestimonialList/TestimonialList";
+import About from "./About/About";
 
 const Home = () => {
   return (
@@ -21,6 +23,8 @@ const Home = () => {
       </Helmet>
       <Hero />
       <SpecialsMenu />
+      <TestimonialList />
+      <About />
     </>
   );
 };
