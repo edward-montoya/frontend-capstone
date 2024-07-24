@@ -43,8 +43,11 @@ const BookingForm = ({ confirmation }: { confirmation: Function }) => {
     onSubmit: (values) => {
       // Do something with the data
       console.log("Form data: ", JSON.stringify(values, null, 2));
-      submitReservation(values as unknown as Reservation);
-      confirmation();
+      const response = submitReservation(values as unknown as Reservation);
+      if (response) {
+        formik.resetForm();
+        confirmation();
+      }
     },
   });
 

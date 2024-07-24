@@ -11,7 +11,7 @@ export type Reservation = {
 export type ReservationContextType = {
   availableTimes: string[];
   dispatchOnDateChange: (date: string) => void;
-  submitReservation: (r: Reservation) => void;
+  submitReservation: (r: Reservation) => boolean;
 };
 
 export const ReservationContext = createContext<ReservationContextType | null>(null);
@@ -21,13 +21,13 @@ export const ReservationProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   
   const updateTimes = (availableTimes: string[], date: any) => {
-    const response = fetchAPI(new Date(date.target.value));
+    const response = fetchAPI(date.target.value);
     return response.length !== 0 ? response : availableTimes;
   };
 
   const initializeTimes = (initialAvailableTimes: string[]) => [
     ...initialAvailableTimes,
-    ...fetchAPI(new Date()),
+    ...fetchAPI((new Date()).toLocaleDateString('en-CA')),
   ];
 
   const [availableTimes, dispatchOnDateChange] = useReducer(
@@ -37,11 +37,7 @@ export const ReservationProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 
   const submitReservation = (r: Reservation) => {
-    const send = submitAPI(r);
-    if (send) {
-      // Success
-    }
-    // Handle errors
+    return submitAPI(r);
   };
   return (
     <ReservationContext.Provider
