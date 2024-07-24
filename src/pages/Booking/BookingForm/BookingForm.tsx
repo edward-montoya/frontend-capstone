@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import "./BookingForm.scss";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Reservation, ReservationContext, ReservationContextType } from "../../../context/ReservationContext";
 
 const BookingForm = ({ confirmation }: { confirmation: Function }) => {
