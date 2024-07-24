@@ -15,7 +15,7 @@ const fetchAPI = (date: Date) => {
     if (random() < 0.5) result.push(i + ":30");
   }
 
-  return result;
+  return ["16:00", ...result];
 };
 
 const submitAPI = (formData: any) => {

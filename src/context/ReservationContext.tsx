@@ -20,8 +20,8 @@ export const ReservationProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   
-  const updateTimes = (availableTimes: string[], date: string) => {
-    const response = fetchAPI(new Date(date));
+  const updateTimes = (availableTimes: string[], date: any) => {
+    const response = fetchAPI(new Date(date.target.value));
     return response.length !== 0 ? response : availableTimes;
   };
 

@@ -33,11 +33,12 @@ const Input = ({ formik, field, fieldLabel, type = "text", options = [], onChang
         value={formik.values[field]}
         onChange={formik.handleChange}
       >
+        <option disabled value={''}> -- select an option -- </option>
         { options.map((option, index) => (<option key={`option-${index}`}>{option}</option>)) }
       </select>
     }
      {formik.touched[field] && formik.errors[field] ? (
-        <div className="error">{formik.errors[field]}</div>
+        <div role="alert" className="error">{formik.errors[field]}</div>
       ) : null} 
       
     </div>
